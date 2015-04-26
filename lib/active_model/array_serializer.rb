@@ -36,9 +36,9 @@ module ActiveModel
       serializer_class.new(item, scope: scope, key_format: key_format, only: @only, except: @except)
     end
 
-    def serializable_object
+    def serializable_object(options={})
       @object.map do |item|
-        serializer_for(item).serializable_object
+        serializer_for(item).serializable_object(options)
       end
     end
     alias_method :serializable_array, :serializable_object
